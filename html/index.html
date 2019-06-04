@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script>
+</head>
+<body>
+    <head>
+        <h1>Curso Web Moderno</h1>
+    </head>
+    <nav>
+        <a href="exercicios/teste.html">Opa fion</a>
+    </nav>
+    <section id="conteudo"></section>
+    <script>
+        document.querySelectorAll("a").forEach(link => {
+            link.onclick = function(e){
+                e.preventDefault()
+                const conteudo = document.getElementById("conteudo")
+                fetch(link.href) 
+                    .then(resp => {
+                        console.log(resp)
+                        return resp.text()
+                    })
+                    .then(html => conteudo.innerHTML += html)
+            }
+        })
+    </script>
+</body>
+</html>
